@@ -22,6 +22,7 @@ df = pd.DataFrame(data)
 
 # Frequency count for "R&D"
 rd_count = (df["Department"] == "R&D").sum()
+print(rd_count)
 print(f"Frequency count for R&D department: {rd_count}")
 
 # Create histogram
