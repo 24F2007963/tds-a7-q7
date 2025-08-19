@@ -50,6 +50,8 @@ html_content = f"""
 </head>
 <body>
 <h2>Employee Department Histogram</h2>
+<h3>Frequency count for R&D department: {rd_count}</h3>
+<p>{rd_count}</p>
 {plot_html}
 {js_console}
 </body>
