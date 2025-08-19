@@ -5,8 +5,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import mpld3
+from mpld3 import plugins
 
-# 1. Generate synthetic employee dataset
+# Generate synthetic data
 np.random.seed(42)
 departments = ["R&D", "Sales", "HR", "Marketing", "Finance"]
 regions = ["North", "South", "East", "West"]
@@ -19,25 +21,23 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Optional: Save dataset (if needed)
-# df.to_csv("employee_data.csv", index=False)
-
-# 2. Frequency count for "R&D" department
+# Frequency count for "R&D"
 rd_count = (df["Department"] == "R&D").sum()
 print(f"Frequency count for R&D department: {rd_count}")
 
-# 3. Create histogram of departments
-plt.figure(figsize=(8,6))
-sns.countplot(x="Department", data=df, palette="Set2")
-plt.title("Employee Distribution by Department")
-plt.xlabel("Department")
-plt.ylabel("Count")
-plt.tight_layout()
+# Create histogram
+fig, ax = plt.subplots(figsize=(8,6))
+sns.countplot(x="Department", data=df, palette="Set2", ax=ax)
+ax.set_title("Employee Distribution by Department")
+ax.set_xlabel("Department")
+ax.set_ylabel("Count")
 
-# Save the plot as HTML using mpld3
-import mpld3
-html_str = mpld3.fig_to_html(plt.gcf())
+# Add R&D frequency as text in the plot
+ax.text(0, rd_count + 1, f"R&D count: {rd_count}", ha='center', fontsize=12, color='black')
+
+# Save as interactive HTML
+html_str = mpld3.fig_to_html(fig)
 with open("employee_department_histogram.html", "w") as f:
     f.write(html_str)
 
-print("Histogram saved as 'employee_department_histogram.html'")
+print("Histogram + R&D frequency saved as 'employee_department_histogram.html'")
