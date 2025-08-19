@@ -6,7 +6,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import mpld3
-from mpld3 import plugins
 
 # Generate synthetic data
 np.random.seed(42)
@@ -32,12 +31,32 @@ ax.set_title("Employee Distribution by Department")
 ax.set_xlabel("Department")
 ax.set_ylabel("Count")
 
-# Add R&D frequency as text in the plot
-ax.text(0, rd_count + 1, f"R&D count: {rd_count}", ha='center', fontsize=12, color='black')
+# Convert matplotlib figure to HTML using mpld3
+plot_html = mpld3.fig_to_html(fig)
 
-# Save as interactive HTML
-html_str = mpld3.fig_to_html(fig)
+# Inject JavaScript to print R&D count to browser console
+js_console = f"""
+<script>
+console.log("Frequency count for R&D department: {rd_count}");
+</script>
+"""
+
+# Final HTML combining plot + console JS
+html_content = f"""
+<html>
+<head>
+<title>Employee Department Histogram</title>
+</head>
+<body>
+<h2>Employee Department Histogram</h2>
+{plot_html}
+{js_console}
+</body>
+</html>
+"""
+
+# Save HTML
 with open("employee_department_histogram.html", "w") as f:
-    f.write(html_str)
+    f.write(html_content)
 
-print("Histogram + R&D frequency saved as 'employee_department_histogram.html'")
+print("HTML file generated. Open in browser and check console for R&D count.")
