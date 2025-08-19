@@ -4,5 +4,5 @@ This repository contains a Python-based analysis of employee performance distrib
 
 **Email:** 24f2007963@ds.study.iitm.ac.in
 
-- `analysis.py`: Python script generating histogram
-- `employee_department_histogram.html`: Interactive HTML visualization
+- `employee_analysis.py`: Python script generating histogram
+- `employee_analysis.html`: Interactive HTML visualization
