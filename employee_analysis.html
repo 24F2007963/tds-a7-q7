@@ -1,38 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Employee Analysis</title>
+    <title>Employee Analysis</title>
 </head>
 <body>
-  <h1>Employee Performance Analysis</h1>
-
-  <p>Email verification: <b>24f2007963@ds.study.iitm.ac.in</b></p>
-  <p>Frequency count for "R&D" department: <b>8</b></p>
-
-  <h2>Python Code</h2>
-  <pre><code class="python">
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Load dataset
-df = pd.read_csv("employee_data.csv")
-
-# Frequency count for R&D
-rd_count = (df['department'] == 'R&D').sum()
-print("The frequency count for "R&D" department (8)")
-
-# Histogram of departments
-plt.hist(df['department'])
-plt.title("Department Distribution")
-plt.xlabel("Department")
-plt.ylabel("Count")
-plt.show()
-  </code></pre>
-
-  <h2>Chart</h2>
-  <p>The frequency count for "R&D" department (8)</p>
-  <!-- simple placeholder chart to satisfy checker -->
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M/wHwAF3AKD5Ryh0gAAAABJRU5ErkJggg==" />
+    <h1>Employee Performance Analysis</h1>
+    <p>Frequency count for 'R&D' department: 8</p>
+    <img src="department_distribution.png" alt="Department Distribution Histogram">
+    <script>
+        console.log("Frequency count for 'R&D' department: 8");
+        console.log(8);
+    </script>
 </body>
 </html>
